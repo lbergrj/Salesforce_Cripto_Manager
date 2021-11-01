@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <brand>
+        <headerColor>#0C3805</headerColor>
+        <shouldOverrideOrgTheme>false</shouldOverrideOrgTheme>
+    </brand>
+    <formFactors>Small</formFactors>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <label>Cripto Menager</label>
+    <navType>Standard</navType>
+    <tabs>standard-Account</tabs>
+    <tabs>ItemCarteira__c</tabs>
+    <tabs>Carteira__c</tabs>
+    <tabs>Ativo__c</tabs>
+    <tabs>Mercado__c</tabs>
+    <tabs>Instituicao__c</tabs>
+    <uiType>Lightning</uiType>
+    <utilityBar>Cripto_Menager_UtilityBar</utilityBar>
+</CustomApplication>

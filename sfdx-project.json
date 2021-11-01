@@ -1,0 +1,12 @@
+{
+  "packageDirectories": [
+    {
+      "path": "force-app",
+      "default": true
+    }
+  ],
+  "name": "Cripto Menager",
+  "namespace": "",
+  "sfdcLoginUrl": "https://venancio-dev-ed.my.salesforce.com",
+  "sourceApiVersion": "52.0"
+}
