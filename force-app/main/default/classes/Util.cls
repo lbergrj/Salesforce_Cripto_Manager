@@ -2,10 +2,13 @@ public class Util {
 
    static List<Carteira__c> carteiras;
    static List<Mercado__c> mercados;
+   static Map<String,Double> mapCotacao;
     
     
     public static void criarMassaDados(){
-       
+        
+        setPrecoMarcado();
+
         //Adicionar Contatos
 		List<Contact> contacts = new List<Contact>() ;
 		contacts.add(New Contact(FirstName = 'Fernando', LastName ='Fernades'));
@@ -24,7 +27,7 @@ public class Util {
         insts.add(New Instituicao__c(Name = 'XP', NameInstituicao__c = 'XP Investimentos'));
 		insts.add(New Instituicao__c(Name = 'BTG', NameInstituicao__c = 'Banco BTG'));
 		insts.add(New Instituicao__c(Name = 'Binace', NameInstituicao__c = 'Binance'));
-        //Dinsts.add(New Instituicao__c(Name = 'Inter', NameInstituicao__c = 'Banco Inter'));
+        //insts.add(New Instituicao__c(Name = 'Inter', NameInstituicao__c = 'Banco Inter'));
 		insert(insts);
         
         
@@ -55,15 +58,23 @@ public class Util {
         	}
         }
         insert(mercados);
-
-
-        //Cria registros de carteiras de investimento
+       //Cria registros de carteiras de investimento
 		addCarteiras(contacts,insts);
-
-
-
-
 	}
+
+    private static void setPrecoMarcado(){
+        mapCotacao.put('BTC/BRL',360);
+        mapCotacao.put('BTC/USDT',360);
+        mapCotacao.put('BTC/EUR',360);
+
+        mapCotacao.put('ETH/BRL',360);
+        mapCotacao.put('ETH/USDT',360);
+        mapCotacao.put('ETH/EUR',360);
+
+        mapCotacao.put('BNB/BRL',360);
+        mapCotacao.put('BNB/USDT',360);
+        mapCotacao.put('BNB/EUR',360);
+    }
     
     
     private static Carteira__c setCarteira(Contact ct, Instituicao__c inst){
