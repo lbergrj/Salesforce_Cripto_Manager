@@ -156,8 +156,9 @@
     <gender>Feminine</gender>
     <label>Item de Carteira</label>
     <nameField>
+        <displayFormat>ITC{000000}</displayFormat>
         <label>Nome de Item de Carteita</label>
-        <type>Text</type>
+        <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Itens de Carteira</pluralLabel>
     <searchLayouts></searchLayouts>

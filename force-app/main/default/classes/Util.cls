@@ -14,8 +14,8 @@ public class Util {
 		contacts.add(New Contact(FirstName = 'Fernando', LastName ='Fernades'));
 		contacts.add(New Contact(FirstName = 'Marcio', LastName ='Farias'));
 		contacts.add(New Contact(FirstName = 'Maria', LastName ='da Silva'));
-		//contacts.add(New Contact(FirstName = 'Pedro', LastName ='Souza'));
-		//contacts.add(New Contact(FirstName = 'Alessandra', LastName ='Rangel'));
+		contacts.add(New Contact(FirstName = 'Pedro', LastName ='Souza'));
+		contacts.add(New Contact(FirstName = 'Alessandra', LastName ='Rangel'));
 		//contacts.add(New Contact(FirstName = 'Rodrigo', LastName ='Alves'));
 		//contacts.add(New Contact(FirstName = 'Paula', LastName ='Toller'));
 		insert(contacts);
@@ -27,7 +27,7 @@ public class Util {
         insts.add(New Instituicao__c(Name = 'XP', NameInstituicao__c = 'XP Investimentos'));
 		insts.add(New Instituicao__c(Name = 'BTG', NameInstituicao__c = 'Banco BTG'));
 		insts.add(New Instituicao__c(Name = 'Binace', NameInstituicao__c = 'Binance'));
-        //insts.add(New Instituicao__c(Name = 'Inter', NameInstituicao__c = 'Banco Inter'));
+        insts.add(New Instituicao__c(Name = 'Inter', NameInstituicao__c = 'Banco Inter'));
 		insert(insts);
         
         
@@ -52,28 +52,34 @@ public class Util {
         mercados = new List<Mercado__c>();
         for(Ativo__c atvPri: atvsPri){            
             for(Ativo__c atvSec: atvsSec){
-               mercados.add(New Mercado__c(Name = (atvPri.Name +'/'+ atvSec.Name),
+               String cod = atvPri.Name +'/'+ atvSec.Name;
+               mercados.add(New Mercado__c(Name = (cod),
                                            AtivoPrimario__c = atvPri.Id,
-                                           AtivoSecundario__c = atvSec.Id));           
+                                           AtivoSecundario__c = atvSec.Id,
+                                           Cotacao__c = mapCotacao.get(cod)));
+                                  
         	}
         }
         insert(mercados);
+        
+        
        //Cria registros de carteiras de investimento
 		addCarteiras(contacts,insts);
 	}
 
     private static void setPrecoMarcado(){
-        mapCotacao.put('BTC/BRL',360);
-        mapCotacao.put('BTC/USDT',360);
-        mapCotacao.put('BTC/EUR',360);
+        mapCotacao = new Map<String,Double>();
+        mapCotacao.put('BTC/BRL',360000.0);
+        mapCotacao.put('BTC/USDT',60400.0);
+        mapCotacao.put('BTC/EUR',54600);
 
-        mapCotacao.put('ETH/BRL',360);
-        mapCotacao.put('ETH/USDT',360);
-        mapCotacao.put('ETH/EUR',360);
+        mapCotacao.put('ETH/BRL',26000.0);
+        mapCotacao.put('ETH/USDT',4580.0);
+        mapCotacao.put('ETH/EUR',3950);
 
-        mapCotacao.put('BNB/BRL',360);
-        mapCotacao.put('BNB/USDT',360);
-        mapCotacao.put('BNB/EUR',360);
+        mapCotacao.put('BNB/BRL',3187.0);
+        mapCotacao.put('BNB/USDT',550);
+        mapCotacao.put('BNB/EUR',481);
     }
     
     
@@ -84,8 +90,10 @@ public class Util {
     
     private static void addCarteiras(List<Contact> cts, List<Instituicao__c> insts){
         carteiras = new   List<Carteira__c>();            
+        
         for(Integer i=0; i<cts.size(); i++){
             Contact ct = cts.get(i);
+            
             for(Integer j=0; j<insts.size(); j++){
 			Instituicao__c inst =  insts.get(j);             
                 if (j == 0){
@@ -101,19 +109,35 @@ public class Util {
             
         }
         insert(carteiras);
+        addItensCarteiras();
     }
 
-    private static ItemCarteira__c setItemCarteira(Carteira__c carteira, Mercado__c mercado,Double quant, Double valorInvestido){
+    private static ItemCarteira__c setItemCarteira(Carteira__c carteira, Mercado__c mercado,Double quant){
         ItemCarteira__c itemCarteira =  new ItemCarteira__c( Mercado__c = mercado.Id,
                                     Carteira__c = carteira.Id,
                                     Quantidade__c = quant,
-                                    ValorInvestido__c = valorInvestido
-                                    );
+                                    ValorInvestido__c = quant * mercado.Cotacao__c / 1.1);
         return itemCarteira;
 
     }
     
     private static void addItensCarteiras(){
+       	List<ItemCarteira__c> itens = new List<ItemCarteira__c>();
+        
+        for(Integer i =0; i< carteiras.size(); i++){
+            Carteira__c carteira = carteiras.get(i);
+            
+            for(Integer j=0; j< mercados.size(); j++){
+                Mercado__c mercado = mercados.get(j);
+                Double quant = (i * 3 ) + (j * 2) + 5;
+                
+                if(j == 0 || j == i+1 || j == i+3 || j == i+5){
+                    itens.add(setItemCarteira(carteira, mercado,quant));
+                }
+            }
+            
+        }
+        insert(itens);
 
     }
 
