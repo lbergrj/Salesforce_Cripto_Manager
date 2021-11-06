@@ -1,0 +1,14 @@
+{
+    "mercados": [
+        {
+            "id": "a6s5f0000000FeQAAU",
+            "price": "350326.00000000",
+            "symbol": "BTCBRL"
+        },
+        {
+            "id": "a6s5f0000000FeRAAU",
+            "price": "61854.01000000",
+            "symbol": "BTCUSDT"
+        }
+    ]
+}

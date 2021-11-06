@@ -5,8 +5,9 @@
     "%vlocity_namespace%__Element__c": [
         "team_updateCotacao_Element_BinanceAPI.json",
         "team_updateCotacao_Element_DR_GetMercados.json",
-        "team_updateCotacao_Element_ListAction1.json",
-        "team_updateCotacao_Element_ResponseAction1.json"
+        "team_updateCotacao_Element_ListActionMercados.json",
+        "team_updateCotacao_Element_DR_SetMercados.json",
+        "team_updateCotacao_Element_ResponseAction.json"
     ],
     "%vlocity_namespace%__IsLwcEnabled__c": false,
     "%vlocity_namespace%__IsProcedure__c": true,

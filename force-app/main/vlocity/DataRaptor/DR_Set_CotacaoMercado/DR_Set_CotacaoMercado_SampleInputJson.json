@@ -1,0 +1,49 @@
+{
+    "mercados": [
+        {
+            "id": "a6s5f0000000FeQAAU",
+            "price": "352435.00000000",
+            "symbol": "BTCBRL"
+        },
+        {
+            "id": "a6s5f0000000FeRAAU",
+            "price": "62220.04000000",
+            "symbol": "BTCUSDT"
+        },
+        {
+            "id": "a6s5f0000000FeSAAU",
+            "price": "53963.60000000",
+            "symbol": "BTCEUR"
+        },
+        {
+            "id": "a6s5f0000000FeTAAU",
+            "price": "25737.36000000",
+            "symbol": "ETHBRL"
+        },
+        {
+            "id": "a6s5f0000000FeUAAU",
+            "price": "4538.40000000",
+            "symbol": "ETHUSDT"
+        },
+        {
+            "id": "a6s5f0000000FeVAAU",
+            "price": "3936.90000000",
+            "symbol": "ETHEUR"
+        },
+        {
+            "id": "a6s5f0000000FeWAAU",
+            "price": "3291.00000000",
+            "symbol": "BNBBRL"
+        },
+        {
+            "id": "a6s5f0000000FeXAAU",
+            "price": "581.10000000",
+            "symbol": "BNBUSDT"
+        },
+        {
+            "id": "a6s5f0000000FeYAAU",
+            "price": "504.00000000",
+            "symbol": "BNBEUR"
+        }
+    ]
+}

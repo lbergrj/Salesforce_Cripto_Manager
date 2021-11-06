@@ -1,3 +1,4 @@
 [
-    "DataRaptor/DR_GetMarcados"
+    "DataRaptor/DR_GetMarcados",
+    "DataRaptor/DR_Set_CotacaoMercado"
 ]
